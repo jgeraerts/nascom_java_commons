@@ -20,6 +20,13 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>nascom.repo</id>
+            <name>Nascom Maven Repository</name>
+            <url>http://maven.development.nascom.be/content/repositories/snapshots</url>
+        </repository>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
