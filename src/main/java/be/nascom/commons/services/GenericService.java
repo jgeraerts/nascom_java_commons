@@ -56,4 +56,22 @@ public interface GenericService<T, PK extends Serializable> {
      * @return Collection<T> of all persisted objects.
      */
     Collection<T> getAll();
+
+    /**
+     * Get a collection of all persisted objects that match an example object.
+     *
+     * Be careful when feeding in an example, hibernate will ignore:
+     * <ul>
+     * <li>Version properties</li>
+     * <li>identifiers</li>
+     * <li>associated objects</li>
+     * </ul>
+     *
+     * This is documented here: http://docs.jboss.org/hibernate/stable/core/reference/en/html_single/#querycriteria-examples
+     *
+     * @param example the example uses in the query.
+     * @return Collection<T> of all persisted objects similar to the example.
+     */
+    @Transactional(readOnly = true)
+    Collection<T> findByExample(T example);
 }

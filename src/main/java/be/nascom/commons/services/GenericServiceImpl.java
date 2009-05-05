@@ -71,4 +71,12 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericDa
     public Collection<T> getAll() {
         return dao.getAll();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Collection<T> findByExample(T example) {
+        return dao.findByExample(example);
+    }
 }

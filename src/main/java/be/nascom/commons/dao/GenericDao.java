@@ -14,7 +14,7 @@ import java.util.Collection;
  * Date: Apr 24, 2009
  * Time: 12:31:41 PM
  */
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.SUPPORTS)
 public interface GenericDao<T, PK extends Serializable> {
     /**
      * Persist an object
@@ -58,4 +58,22 @@ public interface GenericDao<T, PK extends Serializable> {
      */
     @Transactional(readOnly = true)
     Collection<T> getAll();
+
+    /**
+     * Get a collection of all persisted objects that match an example object.
+     *
+     * Be careful when feeding in an example, hibernate will ignore:
+     * <ul>
+     * <li>Version properties</li>
+     * <li>identifiers</li>
+     * <li>associated objects</li>
+     * </ul>
+     *
+     * This is documented here: http://docs.jboss.org/hibernate/stable/core/reference/en/html_single/#querycriteria-examples
+     *
+     * @param example the example uses in the query.
+     * @return Collection<T> of all persisted objects similar to the example.
+     */
+    @Transactional(readOnly = true)
+    Collection<T> findByExample(T example);
 }
