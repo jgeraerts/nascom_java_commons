@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Role implements Comparable<Role>, Serializable {
     @Id
     @SuppressWarnings({"UnusedDeclaration"})
-    private int id;
+    private long id;
 
     private String name;
 
@@ -26,7 +26,7 @@ public class Role implements Comparable<Role>, Serializable {
         this.name = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -41,12 +41,13 @@ public class Role implements Comparable<Role>, Serializable {
     @Override
     public int compareTo(Role role) {
         if (role == null) return 1;
-        return getId() - role.getId();
+        if (getId() == role.getId()) return 0;
+        return (getId() > role.getId()) ? 1 : -1;        
     }
 
     @Override
     public int hashCode() {
-        return id;
+        return Long.valueOf(id).intValue();
     }
 
     @Override
