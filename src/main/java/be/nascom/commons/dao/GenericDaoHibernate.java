@@ -3,7 +3,6 @@ package be.nascom.commons.dao;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -15,7 +14,6 @@ import java.util.Collection;
  * Date: Apr 24, 2009
  * Time: 12:33:18 PM
  */
-@Repository
 public class GenericDaoHibernate<T, PK extends Serializable> implements GenericDao<T, PK> {
     @Autowired
     protected SessionFactory sessionFactory;

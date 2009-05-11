@@ -1,7 +1,6 @@
 package be.nascom.commons.services;
 
 import be.nascom.commons.dao.GenericDao;
-import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -13,7 +12,6 @@ import java.util.Collection;
  * Date: Apr 24, 2009
  * Time: 12:53:36 PM
  */
-@Service
 public class GenericServiceImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
     protected GenericDao<T, PK> dao;
 
