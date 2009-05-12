@@ -57,4 +57,8 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
         //noinspection unchecked
         return sessionFactory.getCurrentSession().createCriteria(type).add(Example.create(example)).list();
     }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 }
