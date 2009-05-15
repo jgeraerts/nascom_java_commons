@@ -3,7 +3,7 @@ package be.nascom.commons.services;
 import be.nascom.commons.dao.GenericDao;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Basic implementation of the GenericService interface.
@@ -66,7 +66,7 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericDa
      * {@inheritDoc}
      */
     @Override
-    public Collection<T> getAll() {
+    public List<T> getAll() {
         return dao.getAll();
     }
 
@@ -74,7 +74,7 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericDa
      * {@inheritDoc}
      */
     @Override
-    public Collection<T> findByExample(T example) {
+    public List<T> findByExample(T example) {
         return dao.findByExample(example);
     }
 }

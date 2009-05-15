@@ -5,7 +5,7 @@ import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Hibernate based implementation of the GenericDao interface. Original code by jgeraerts.
@@ -47,13 +47,13 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
     }
 
     @Override
-    public Collection<T> getAll() {
+    public List<T> getAll() {
         //noinspection unchecked
         return sessionFactory.getCurrentSession().createCriteria(type).list();
     }
 
     @Override
-    public Collection<T> findByExample(T example) {
+    public List<T> findByExample(T example) {
         //noinspection unchecked
         return sessionFactory.getCurrentSession().createCriteria(type).add(Example.create(example)).list();
     }

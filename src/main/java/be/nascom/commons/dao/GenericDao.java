@@ -4,7 +4,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Generic dao interface providing standard CRUD functionality.
@@ -57,23 +57,23 @@ public interface GenericDao<T, PK extends Serializable> {
      * @return Collection<T> of all persisted objects.
      */
     @Transactional(readOnly = true)
-    Collection<T> getAll();
+    List<T> getAll();
 
     /**
      * Get a collection of all persisted objects that match an example object.
-     *
+     * <p/>
      * Be careful when feeding in an example, hibernate will ignore:
      * <ul>
      * <li>Version properties</li>
      * <li>identifiers</li>
      * <li>associated objects</li>
      * </ul>
-     *
+     * <p/>
      * This is documented here: http://docs.jboss.org/hibernate/stable/core/reference/en/html_single/#querycriteria-examples
      *
      * @param example the example uses in the query.
      * @return Collection<T> of all persisted objects similar to the example.
      */
     @Transactional(readOnly = true)
-    Collection<T> findByExample(T example);
+    List<T> findByExample(T example);
 }
