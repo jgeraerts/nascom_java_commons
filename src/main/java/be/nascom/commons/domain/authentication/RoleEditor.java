@@ -1,7 +1,6 @@
 package be.nascom.commons.domain.authentication;
 
 import java.beans.PropertyEditorSupport;
-import java.util.StringTokenizer;
 
 /**
  * User: bart
@@ -12,7 +11,14 @@ public class RoleEditor extends PropertyEditorSupport {
 
     @Override
     public void setAsText(String value) {
-        StringTokenizer t = new StringTokenizer(value, ";");
-        setValue(new Role(Integer.parseInt(t.nextToken()), t.nextToken()));
+        setValue(new Role(Long.parseLong(value)));
+    }
+
+    @Override
+    public String getAsText() {
+        if (getValue() instanceof Role) {
+            return Long.toString(((Role) getValue()).getId());
+        }
+        return null;
     }
 }

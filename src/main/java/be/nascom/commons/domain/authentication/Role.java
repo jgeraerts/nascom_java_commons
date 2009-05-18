@@ -31,7 +31,11 @@ public class Role implements Comparable<Role>, Serializable {
         super();
     }
 
-    public Role(int id, String name) {
+    public Role(long id) {
+        this.id = id;
+    }
+
+    public Role(long id, String name) {
         this.id = id;
         this.name = name;
     }
