@@ -1,8 +1,11 @@
 package be.nascom.commons.domain.authentication;
 
+import com.google.common.collect.Lists;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: bart
@@ -11,6 +14,13 @@ import java.io.Serializable;
  */
 @Entity
 public class Role implements Comparable<Role>, Serializable {
+    public static final Role ROLE_USER = new Role(1, "ROLE_USER");
+    public static final Role ROLE_CONTRIBUTOR = new Role(2, "ROLE_CONTRIBUTOR");
+    public static final Role ROLE_ADMIN = new Role(3, "ROLE_ADMIN");
+    public static final Role ROLE_SUPER_ADMIN = new Role(4, "ROLE_SUPER_ADMIN");
+
+    public static final List<Role> ALL_ROLES = Lists.newArrayList(ROLE_USER, ROLE_CONTRIBUTOR, ROLE_ADMIN, ROLE_SUPER_ADMIN);
+
     @Id
     @SuppressWarnings({"UnusedDeclaration"})
     private long id;
@@ -53,5 +63,12 @@ public class Role implements Comparable<Role>, Serializable {
     @Override
     public boolean equals(Object object) {
         return object instanceof Role && compareTo((Role) object) == 0;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append(id).append(";").append(name);
+        return sb.toString();
     }
 }
