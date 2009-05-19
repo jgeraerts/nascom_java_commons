@@ -14,7 +14,7 @@ import java.util.List;
  * Date: Apr 24, 2009
  * Time: 12:31:41 PM
  */
-@Transactional(propagation = Propagation.SUPPORTS)
+@Transactional(propagation = Propagation.REQUIRED)
 public interface GenericDao<T, PK extends Serializable> {
     /**
      * Persist an object
