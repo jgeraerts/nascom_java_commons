@@ -1,5 +1,6 @@
 package be.nascom.commons.dao;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,13 +50,13 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
     @Override
     public List<T> getAll() {
         //noinspection unchecked
-        return sessionFactory.getCurrentSession().createCriteria(type).list();
+        return sessionFactory.getCurrentSession().createCriteria(type).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
     }
 
     @Override
     public List<T> findByExample(T example) {
         //noinspection unchecked
-        return sessionFactory.getCurrentSession().createCriteria(type).add(Example.create(example)).list();
+        return sessionFactory.getCurrentSession().createCriteria(type).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).add(Example.create(example)).list();
     }
 
     public SessionFactory getSessionFactory() {
