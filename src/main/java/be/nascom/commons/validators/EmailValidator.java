@@ -5,7 +5,6 @@ import be.nascom.commons.constraints.Email;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import org.apache.commons.validator.Validator;
 import org.apache.commons.validator.GenericValidator;
 
 /**
