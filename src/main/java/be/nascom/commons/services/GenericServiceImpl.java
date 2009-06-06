@@ -12,7 +12,7 @@ import java.util.List;
  * Date: Apr 24, 2009
  * Time: 12:53:36 PM
  */
-public class GenericServiceImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
+public class GenericServiceImpl<T, PK extends Serializable> implements GenericService<T, PK> {
     protected GenericDao<T, PK> dao;
 
     /**
