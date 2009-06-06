@@ -9,11 +9,9 @@ import org.apache.commons.validator.Validator;
 import org.apache.commons.validator.GenericValidator;
 
 /**
- * Created by IntelliJ IDEA.
  * User: jgeraerts
  * Date: May 20, 2009
  * Time: 9:30:05 AM
- * To change this template use File | Settings | File Templates.
  */
 public class EmailValidator implements ConstraintValidator<Email, String> {
     @Override
