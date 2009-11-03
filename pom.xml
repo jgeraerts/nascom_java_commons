@@ -2,24 +2,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>be.nascom.commons</groupId>
-    <artifactId>nascom-commons</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>nascom-commons-parent</artifactId>
+    <packaging>pom</packaging>
     <version>2.0-SNAPSHOT</version>
-    <name>nascom-commons</name>
+    <name>Nascom Commons :: parent module</name>
     <url>http://maven.apache.org</url>
-    <build>
-        <finalName>nascom-commons</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
+    <modules>
+        <module>nascom-commons-dao</module>
+        <module>nascom-commons-domain</module>
+        <module>nascom-commons-service</module>
+        <module>nascom-commons-servlet</module>
+        <module>nascom-commons-validation</module>
+    </modules>
+
     <distributionManagement>
         <snapshotRepository>
             <id>nascom.snapshot</id>
@@ -32,61 +28,34 @@
             <url>http://maven.development.nascom.be/content/repositories/releases</url>
         </repository>
     </distributionManagement>
+
+
+
+    <build>
+        
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>${servlet.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring</artifactId>
-            <version>${spring.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
+
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>1.0.CR2</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-validator</groupId>
-            <artifactId>commons-validator</artifactId>
-            <version>1.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.collections</groupId>
-            <artifactId>google-collections</artifactId>
-            <version>1.0-rc1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${validation.version}</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>commons-validator</groupId>
-            <artifactId>commons-validator</artifactId>
-            <version>${commons-validator.version}</version>
-        </dependency>
+
+
     </dependencies>
     <properties>
         <junit.version>4.5</junit.version>
@@ -95,5 +64,6 @@
         <hibernate.version>3.3.1.GA</hibernate.version>
         <validation.version>1.0.CR2</validation.version>
         <commons-validator.version>1.3.1</commons-validator.version>
+        <google-collections.version>1.0-rc2</google-collections.version>
     </properties>
 </project>
