@@ -13,6 +13,7 @@
         <module>nascom-commons-domain</module>
         <module>nascom-commons-service</module>
         <module>nascom-commons-servlet</module>
+        <module>nascom-commons-spring</module>
         <module>nascom-commons-validation</module>
     </modules>
 
