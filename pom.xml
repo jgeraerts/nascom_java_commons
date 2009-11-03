@@ -30,6 +30,11 @@
     </distributionManagement>
 
 
+    <scm>
+        <connection>scm:svn:http://svn.int.nascom.be/svn/nascom_java_commons/trunk</connection>
+        <url>http://svn.int.nascom.be</url>
+    </scm>
+
 
     <build>
         
