@@ -5,8 +5,10 @@
     <artifactId>nascom-commons-parent</artifactId>
     <packaging>pom</packaging>
     <version>2.0-SNAPSHOT</version>
-    <name>Nascom Commons :: parent module</name>
-    <url>http://maven.apache.org</url>
+    <name>Nascom Commons</name>
+    <url>http://projects.development.nascom.be/nascom_java_commons/</url>
+
+    <description>Nascom commons</description>
 
     <modules>
         <module>nascom-commons-dao</module>
@@ -28,17 +30,46 @@
             <name>Nascom Maven Repository</name>
             <url>http://maven.development.nascom.be/content/repositories/releases</url>
         </repository>
+
+        <site>
+            <id>development</id>
+            <url>scp://development.int.nascom.be/data/projects/static/nascom_java_commons</url>
+        </site>
     </distributionManagement>
 
 
     <scm>
         <connection>scm:svn:http://svn.int.nascom.be/svn/nascom_java_commons/trunk</connection>
-        <url>http://svn.int.nascom.be</url>
+        <url>http://svn.int.nascom.be/listing.php?repname=nascom_java_commons</url>
     </scm>
 
+    <ciManagement>
+        <url>http://wombat.int.nascom.be:8080/dashboard/build/detail/nascom_java_commons</url>
+    </ciManagement>
+
+    <issueManagement>
+        <url>http://jira.nascom.be/jira/browse/JCOM</url>
+        <system>jira</system>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <id>jgeraerts</id>
+            <email>jo.geraerts@nascom.be</email>
+            <organization>nascom</organization>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
+    <mailingLists>
+        <mailingList>
+            <name>nascom developer list</name>
+            <post>dev@nascom.be</post>
+        </mailingList>
+    </mailingLists>
 
     <build>
-        
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -63,6 +94,23 @@
 
 
     </dependencies>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+
+           
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jxr-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
+
+
     <properties>
         <log4j.version>1.2.14</log4j.version>
         <junit.version>4.5</junit.version>
