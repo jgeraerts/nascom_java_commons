@@ -100,12 +100,14 @@
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
-
-           
-
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jxr-maven-plugin</artifactId>
+                <artifactId>maven-pmd-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jxr-plugin</artifactId>
             </plugin>
         </plugins>
     </reporting>
