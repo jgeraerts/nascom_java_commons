@@ -3,6 +3,7 @@ package be.nascom.commons.dao.hibernate;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
@@ -56,9 +57,55 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
     }
 
     @Override
+    public List<T> getAll(int first, int count) {
+        //noinspection unchecked
+         return (List<T>) createCriteria()
+                 .setFirstResult(first)
+                 .setMaxResults(count)
+                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                 .list();
+    }
+
+    private Criteria createCriteria() {
+        return sessionFactory
+                 .getCurrentSession()
+                 .createCriteria(type);
+    }
+
+    @Override
     public List<T> findByExample(T example) {
         //noinspection unchecked
         return sessionFactory.getCurrentSession().createCriteria(type).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).add(Example.create(example)).list();
+    }
+
+    @Override
+    public List<T> findByExample(T example, int first, int count) {
+        //noinspection unchecked
+        return createCriteria(example)
+                .setFirstResult(first)
+                .setMaxResults(count)
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                .list();
+    }
+
+    private Criteria createCriteria(T example) {
+        return createCriteria()
+              .add(Example.create(example));
+    }
+
+    @Override
+    public Integer countAll() {
+        return (Integer) createCriteria()
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
+    }
+
+    @Override
+    public Integer countByExample(T example) {
+        return (Integer) createCriteria(example)
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
+
     }
 
     public SessionFactory getSessionFactory() {

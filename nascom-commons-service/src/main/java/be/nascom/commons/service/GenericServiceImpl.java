@@ -70,11 +70,30 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericSe
         return dao.getAll();
     }
 
+    @Override
+    public List<T> getAll(int first, int count) {
+        return dao.getAll(first,count);
+    }
+
+    public Integer countAll(){
+        return dao.countAll();
+    }
+
     /**
      * {@inheritDoc}
      */
     @Override
     public List<T> findByExample(T example) {
         return dao.findByExample(example);
+    }
+
+    @Override
+    public List<T> findByExample(T example, int first, int count) {
+        return dao.findByExample(example,first,count);
+    }
+
+    public Integer countByExample(T example){
+        return dao.countByExample(example);
+        
     }
 }

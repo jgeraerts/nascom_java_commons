@@ -59,6 +59,16 @@ public interface GenericDao<T, PK extends Serializable> {
     @Transactional(readOnly = true)
     List<T> getAll();
 
+
+      /**
+     * Get the collection of all persisted objects.
+     *
+     * @return Collection<T> of all persisted objects.
+     * @param first first row of data
+     * @param count minimum number of elements to retrieve
+     */
+    List<T> getAll(int first, int count);
+
     /**
      * Get a collection of all persisted objects that match an example object.
      * <p/>
@@ -76,4 +86,29 @@ public interface GenericDao<T, PK extends Serializable> {
      */
     @Transactional(readOnly = true)
     List<T> findByExample(T example);
+
+
+    /**
+     * Get a collection of all persisted objects that match an example object.
+     * <p/>
+     * Be careful when feeding in an example, hibernate will ignore:
+     * <ul>
+     * <li>Version properties</li>
+     * <li>identifiers</li>
+     * <li>associated objects</li>
+     * </ul>
+     * <p/>
+     * This is documented here: http://docs.jboss.org/hibernate/stable/core/reference/en/html_single/#querycriteria-examples
+     *
+     * @param example the example uses in the query.
+     * @param first first row of data
+     * @param count minimum number of elements to retrieve
+     * @return Collection<T> of all persisted objects similar to the example.
+     */
+    List<T> findByExample(T example, int first, int count);
+
+
+    Integer countAll();
+
+    Integer countByExample(T example);
 }
