@@ -1,0 +1,13 @@
+<?xml version="1.0"?><project>
+  <parent>
+    <artifactId>nascom-commons-parent</artifactId>
+    <groupId>be.nascom.commons</groupId>
+    <version>2.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>nascom-commons-util</artifactId>
+   <name>Nascom Commons :: Utility classes</name>
+  <version>2.0-SNAPSHOT</version>
+  <url>http://maven.apache.org</url>
+ 
+</project>
