@@ -16,11 +16,7 @@ import java.util.List;
 public class GenericServiceImpl<T, PK extends Serializable> implements GenericService<T, PK> {
     protected GenericDao<T, PK> dao;
 
-    /**
-     * Provided to allow for easier testing code.
-     */
-    public GenericServiceImpl() {
-    }
+    
 
     /**
      * This should be the default constructor.
