@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
+import be.nascom.commons.dao.ObjectNotFoundException;
+
 /**
  * Generic service interface providing standard CRUD functionality.
  * Original code by jgeraerts.
@@ -34,7 +36,7 @@ public interface GenericService<T, PK extends Serializable> {
      * @param id instance of the PK type by which to fetch our object of type T.
      * @return object of type T, identified by the provided id.
      */
-    T get(PK id);
+    T get(PK id) throws ObjectNotFoundException;
 
     /**
      * Save changes made to a persistent object.

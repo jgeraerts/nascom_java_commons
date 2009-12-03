@@ -1,6 +1,7 @@
 package be.nascom.commons.service;
 
 import be.nascom.commons.dao.GenericDao;
+import be.nascom.commons.dao.ObjectNotFoundException;
 
 import java.io.Serializable;
 import java.util.List;
@@ -42,7 +43,7 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericSe
      * {@inheritDoc}
      */
     @Override
-    public T get(PK id) {
+    public T get(PK id) throws ObjectNotFoundException {
         return dao.get(id);
     }
 

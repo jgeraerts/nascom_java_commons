@@ -33,7 +33,7 @@ public interface GenericDao<T, PK extends Serializable> {
      * @return object of type T, identified by the provided id.
      */
     @Transactional(readOnly = true)
-    T get(PK id);
+    T get(PK id) throws ObjectNotFoundException;
 
     /**
      * Save changes made to a persistent object.
