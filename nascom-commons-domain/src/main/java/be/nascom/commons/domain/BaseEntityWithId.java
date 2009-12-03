@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 
 @MappedSuperclass
-public class BaseEntityWithId implements Serializable {
+public class  BaseEntityWithId<T> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -56,8 +56,8 @@ public class BaseEntityWithId implements Serializable {
     }
 
 
-    public BaseEntityWithId withId(Long id) {
+    public T withId(Long id) {
         this.id = id;
-        return this;
+        return (T) this;
     }
 }
