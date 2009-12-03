@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import be.nascom.commons.dao.GenericDao;
+import be.nascom.commons.dao.ObjectNotFoundException;
 
 /**
  * Hibernate based implementation of the GenericDao interface. Original code by jgeraerts.
@@ -35,10 +36,16 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
     }
 
     @Override
-    public T get(PK id) {
+    public T get(PK id) throws ObjectNotFoundException {
         //noinspection unchecked
-        return (T) sessionFactory.getCurrentSession().get(type, id);
+        T instance =(T) sessionFactory.getCurrentSession().get(type, id);
+        if (instance == null){
+            throw new ObjectNotFoundException(type,id);
+        }
+        return instance; 
     }
+
+    
 
     @Override
     public void update(T transientObject) {
