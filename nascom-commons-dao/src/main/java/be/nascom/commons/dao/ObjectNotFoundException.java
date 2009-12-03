@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Date: Dec 3, 2009
  * Time: 2:18:12 PM
  */
-public class ObjectNotFoundException extends Exception {
+public class ObjectNotFoundException extends RuntimeException {
     private Class clazz;
     private Object id;
 

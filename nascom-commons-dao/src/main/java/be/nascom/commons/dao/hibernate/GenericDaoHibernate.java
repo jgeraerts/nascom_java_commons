@@ -36,7 +36,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
     }
 
     @Override
-    public T get(PK id) throws ObjectNotFoundException {
+    public T get(PK id) {
         //noinspection unchecked
         T instance =(T) sessionFactory.getCurrentSession().get(type, id);
         if (instance == null){

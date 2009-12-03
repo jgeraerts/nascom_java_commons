@@ -43,7 +43,7 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericSe
      * {@inheritDoc}
      */
     @Override
-    public T get(PK id) throws ObjectNotFoundException {
+    public T get(PK id){
         return dao.get(id);
     }
 
