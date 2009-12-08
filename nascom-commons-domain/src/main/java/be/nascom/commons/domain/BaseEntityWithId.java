@@ -1,9 +1,11 @@
 package be.nascom.commons.domain;
 
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Id;
+import com.google.common.base.Objects;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 /**
@@ -13,7 +15,7 @@ import java.io.Serializable;
  */
 
 @MappedSuperclass
-public class  BaseEntityWithId<T> implements Serializable {
+public class BaseEntityWithId<T> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,21 +32,17 @@ public class  BaseEntityWithId<T> implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        BaseEntityWithId that = (BaseEntityWithId) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-
-        return true;
+        if (o instanceof BaseEntityWithId) {
+            BaseEntityWithId that = (BaseEntityWithId) o;
+            return Objects.equal(this.id, that.id);
+        }
+        return false;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return Objects.hashCode(id);
     }
-
 
     @Override
     public String toString() {
@@ -55,7 +53,7 @@ public class  BaseEntityWithId<T> implements Serializable {
         return sb.toString();
     }
 
-
+    @SuppressWarnings({"unchecked"})
     public T withId(Long id) {
         this.id = id;
         return (T) this;
