@@ -35,4 +35,20 @@ public class ImageUtil {
         graphics2D.drawImage(image, 0, 0, thumbWidth, thumbHeight, null);
         return thumbImage;
     }
+
+    public static BufferedImage scaleImageNoRatio(BufferedImage image, int p_width, int p_height) {
+
+        double thumbRatio = (double) p_width / (double) p_height;
+        int imageWidth = image.getWidth(null);
+        int imageHeight = image.getHeight(null);
+
+        // Draw the scaled image
+        BufferedImage thumbImage = new BufferedImage(p_width,
+                p_height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D graphics2D = thumbImage.createGraphics();
+        graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        graphics2D.drawImage(image, 0, 0, p_width, p_height, null);
+        return thumbImage;
+    }
 }
