@@ -1,0 +1,12 @@
+<?xml version="1.0"?><project>
+  <parent>
+    <artifactId>nascom-commons-parent</artifactId>
+    <groupId>be.nascom.commons</groupId>
+    <version>2.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>nascom-commons-test</artifactId>
+   <name>Nascom Commons :: Test Utility classes</name>
+  <url>http://maven.apache.org</url>
+ 
+</project>
