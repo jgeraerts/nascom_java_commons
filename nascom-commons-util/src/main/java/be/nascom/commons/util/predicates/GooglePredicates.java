@@ -15,11 +15,11 @@ public class GooglePredicates {
         return Predicates.and(Predicates.notNull(), notEmptyPredicate());
     }
 
-    private static <T extends CharSequence> StringNotEmptyPredicate<T> notEmptyPredicate() {
-        return new StringNotEmptyPredicate<T>();
+    private static <T extends CharSequence> NotEmptyPredicate<T> notEmptyPredicate() {
+        return new NotEmptyPredicate<T>();
     }
 
-    private static class StringNotEmptyPredicate<T extends CharSequence> implements Predicate<T> {
+    private static class NotEmptyPredicate<T extends CharSequence> implements Predicate<T> {
         @Override
         public boolean apply(T s) {
             return s.length() > 0;

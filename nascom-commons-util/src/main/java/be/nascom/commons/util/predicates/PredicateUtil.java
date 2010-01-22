@@ -9,7 +9,7 @@ public final class PredicateUtil {
 
     private PredicateUtil(){}
 
-    public static boolean checkStringNotNullOrEmpty(CharSequence s){
+    public static boolean checkNotNullOrEmpty(CharSequence s){
         return GooglePredicates.notNullOrEmptyPredicate().apply(s);
     }
 

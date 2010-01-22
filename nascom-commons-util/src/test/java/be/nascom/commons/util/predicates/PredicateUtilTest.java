@@ -2,7 +2,7 @@ package be.nascom.commons.util.predicates;
 
 import org.junit.Test;
 
-import static be.nascom.commons.util.predicates.PredicateUtil.checkStringNotNullOrEmpty;
+import static be.nascom.commons.util.predicates.PredicateUtil.checkNotNullOrEmpty;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -14,9 +14,9 @@ import static org.junit.Assert.assertTrue;
 public class PredicateUtilTest {
     @Test
     public void testCheckStringNotNullOrEmpty() throws Exception {
-        assertFalse(checkStringNotNullOrEmpty(null));
-        assertFalse(checkStringNotNullOrEmpty(""));
-        assertTrue(checkStringNotNullOrEmpty("mekker"));
+        assertFalse(checkNotNullOrEmpty(null));
+        assertFalse(checkNotNullOrEmpty(""));
+        assertTrue(checkNotNullOrEmpty("mekker"));
 
     }
 }
