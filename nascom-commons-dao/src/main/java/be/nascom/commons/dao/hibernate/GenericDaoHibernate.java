@@ -57,7 +57,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
         return t;
     }
 
-    static <A> A notNullOrObjectNotFound(Object a){
+    public static <A> A notNullOrObjectNotFound(Object a){
         if(a==null){
             throw new ObjectNotFoundException();
         }
