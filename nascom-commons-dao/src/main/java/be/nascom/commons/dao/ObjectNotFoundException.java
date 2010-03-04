@@ -17,5 +17,9 @@ public class ObjectNotFoundException extends RuntimeException {
         this.id= id;
     }
 
-
+    public ObjectNotFoundException(Class clazz) {
+        super("cannot load persistent class of type " + clazz.getName());
+        this.clazz = clazz;        
+        this.id=0;
+    }
 }
