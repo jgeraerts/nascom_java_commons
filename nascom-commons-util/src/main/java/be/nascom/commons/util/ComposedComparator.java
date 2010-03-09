@@ -30,6 +30,14 @@ public class ComposedComparator<A> implements Comparator<A> {
         this.b = b;
     }
 
+    public static <A> Comparator<A> build(Comparator<A>... c) {
+        Builder<A> b = new Builder<A>();
+        for (Comparator<A> comparator : c) {
+            b.add(comparator);
+        }
+        return b.build();
+    }
+
     /**      
      * @see java.util.Comparator#compare(Object, Object)
      */
@@ -39,5 +47,19 @@ public class ComposedComparator<A> implements Comparator<A> {
         int i = a.compare(left,right);
         return i != 0? i: b.compare(left,right);
 
+    }
+
+    private static class Builder<A> {
+        Comparator<A> comparator;
+
+        public Builder<A> add(Comparator<A> c) {
+            if (this.comparator == null) this.comparator = c;
+            else this.comparator = new ComposedComparator<A>(comparator, c);
+            return this;
+        }
+
+        public Comparator<A> build() {
+            return comparator;
+        }
     }
 }
