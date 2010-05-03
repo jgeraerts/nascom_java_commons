@@ -8,7 +8,9 @@
     <version>2.1-SNAPSHOT</version>
     <name>Nascom Commons</name>
     <url>http://projects.development.nascom.be/nascom_java_commons/</url>
-
+    <licenses>
+        <license>bsd</license>
+    </licenses>
     <description>Nascom commons</description>
 
     <modules>
@@ -17,8 +19,7 @@
         <module>nascom-commons-service</module>
         <module>nascom-commons-servlet</module>
         <module>nascom-commons-spring</module>
-        <module>nascom-commons-validation</module>
-        <module>nascom-commons-crowd-api</module>
+        <module>nascom-commons-validation</module>       
         <module>nascom-commons-test</module>
         <module>nascom-commons-util</module>
     </modules>
